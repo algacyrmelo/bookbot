@@ -14,10 +14,13 @@ def get_chars_dict(text):
     return chars
 
 
-def chars_dict_to_sorted_list(num_chars_dict):
-    sorted_list = []
-    for ch in num_chars_dict:
-        sorted_list.append({"char": ch, "num": num_chars_dict[ch]})
-    sorted_list.sort(reverse=True, key=lambda d: d["num"])
-    return sorted_list
+def sort_on(char_count):
+    return char_count[1]
 
+
+def chars_dict_to_sorted_list(num_chars_dict):
+    chars_list = []
+    for ch in num_chars_dict:
+        count = num_chars_dict[ch]
+        chars_list.append((ch, count))
+    return sorted(chars_list, reverse=True, key=sort_on)
